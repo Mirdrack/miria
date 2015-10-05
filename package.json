@@ -1,0 +1,29 @@
+{
+  "name": "miria",
+  "version": "1.0.0",
+  "description": "Serial reader and RethinkDB writer",
+  "main": "app.js",
+  "dependencies": {
+    "rethinkdb": "^2.1.1",
+    "serialport": "^1.7.4"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Mirdrack/miria.git"
+  },
+  "keywords": [
+    "rethinkdb",
+    "serial",
+    "realtime"
+  ],
+  "author": "mirdrack",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Mirdrack/miria/issues"
+  },
+  "homepage": "https://github.com/Mirdrack/miria#readme"
+}
