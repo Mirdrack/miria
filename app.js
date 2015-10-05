@@ -32,8 +32,10 @@ r.connect({ host: '192.168.100.200', port: 28015 }, function(err, conn) {
 						.insert({ temperature: data.temperature, humidity: data.humidity })
 						.run(conn, function(err, res) {
 					  
-						if(err) throw err;
-						//console.log(res);
+						if(err) 
+							throw err;
+						else 
+							console.log('Data inserted.');
 					});
 				} catch(e) {
 					
