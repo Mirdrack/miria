@@ -1,14 +1,16 @@
+// Setup Config
+var config = require('./config/appConfig');
 // Serial Port setup
-var serialport = require("serialport");
+var serialport = require('serialport');
 var SerialPort = serialport.SerialPort; // localize object constructor
 
-var sp = new SerialPort("/dev/ttyACM0", {
-	baudrate: 9600,
+var sp = new SerialPort(config.usb.name, {
+	baudrate: config.usb.baudrate,
 	parser: serialport.parsers.readline('\n')
 }, false);
 
 r = require('rethinkdb')
-r.connect({ host: '192.168.100.200', port: 28015 }, function(err, conn) {
+r.connect({ host: config.db.host, port: config.db.port }, function(err, conn) {
   
 	if(err) throw err;
 
@@ -28,7 +30,7 @@ r.connect({ host: '192.168.100.200', port: 28015 }, function(err, conn) {
 					  
 					data = JSON.parse(data);          
 					// We insert our recolected data in our Rethink Database
-					r.db('Natalya').table('reads')
+					r.db(config.db.name).table('reads')
 						.insert({ temperature: data.temperature, humidity: data.humidity })
 						.run(conn, function(err, res) {
 					  
