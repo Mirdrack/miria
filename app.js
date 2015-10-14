@@ -31,7 +31,7 @@ r.connect({ host: config.db.host, port: config.db.port }, function(err, conn) {
 					data = JSON.parse(data);          
 					// We insert our recolected data in our Rethink Database
 					r.db(config.db.name).table('reads')
-						.insert({ temperature: data.temperature, humidity: data.humidity })
+						.insert({ temperature: data.temperature, humidity: data.humidity, date: new Date() })
 						.run(conn, function(err, res) {
 					  
 						if(err) 
